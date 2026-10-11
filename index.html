@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Flashlight Trap Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="appBody" class="flashlight-off">
+
+    <!-- Flashlight UI Control Layer -->
+    <div class="flashlight-container">
+        <div id="bulbIcon" class="bulb-icon">💤</div>
+        <h1 id="appTitle" class="app-title">Flashlight Status: OFF</h1>
+        <p id="appSubtitle" class="app-subtitle">Battery Level: Stable</p>
+        
+        <!-- Toggle Button (Changes behavior dynamically) -->
+        <button id="powerBtn" class="power-btn turn-on" onclick="handlePowerClick()">
+            🔋 TURN ON FLASHLIGHT
+        </button>
+        <p id="scamNotice" class="scam-notice">Free utility app by Sketchy Utilities Corp.</p>
+    </div>
+
+    <!-- Google Play Backdrop Dimmer -->
+    <div id="playBackdrop" class="backdrop"></div>
+
+    <!-- 1. Google Play Sheet Overlays -->
+    <div id="playSheet" class="play-sheet">
+        <div class="play-header">
+            <svg class="play-logo" viewBox="0 0 24 24">
+                <path fill="#EA4335" d="M3,2.46c-0.17,0.19-0.27,0.49-0.27,0.87v17.33c0,0.38,0.1,0.68,0.27,0.87l0.06,0.06L13.1,11.55v-0.12L3.06,1.4L3,2.46z"/>
+                <path fill="#FBBC05" d="M16.42,14.88l-3.32,-3.32v-0.12l3.32,-3.32l0.08,0.04L20.4,10.5c1.11,0.63,1.11,1.66,0,2.29l-3.9,2.22L16.42,14.88z"/>
+                <path fill="#34A853" d="M13.1,11.43L3.06,1.4C2.89,1.57,2.79,1.86,2.79,2.22c0,0.36,0.1,0.64,0.27,0.82l10.04,10.04l3.4,-3.4"/>
+                <path fill="#4285F4" d="M13.1,11.43l3.4,3.4l3.9,-2.22c0.56,-0.32,0.84,-0.74,0.84,-1.17s-0.28,-0.85,-0.84,-1.17l-3.9,-2.22l-3.4,3.38"/>
+            </svg>
+            <span class="play-title">Google Play</span>
+        </div>
+
+        <div class="product-info">
+            <div>
+                <h2 id="prodName" class="item-name">Product</h2>
+                <p class="item-dev">Sketchy Utilities Corp.</p>
+            </div>
+            <div>
+                <div id="prodPrice" class="item-price">$99.99</div>
+                <p class="tax-note">Plus tax/minute</p>
+            </div>
+        </div>
+
+        <div class="account-row">
+            <div class="account-details">
+                <span class="pm-icon">💳</span>
+                <div>
+                    <p class="email-text">gullible.user@gmail.com</p>
+                    <p class="pm-text">Google Pay •••• 4321</p>
+                </div>
+            </div>
+            <div class="arrow-right"></div>
+        </div>
+
+        <div class="legal-text">
+            Subscriptions automatically renew at $99.99/week unless canceled. Turning off your phone screen will not stop billing. <a href="#">Learn more</a>
+        </div>
+
+        <div class="actions">
+            <div class="gpay-logo">G<span>Pay</span></div>
+            <button id="confirmBtn" class="confirm-btn" onclick="startLoadingProcess()">
+                <span id="btnText">1-TAP BUY</span>
+                <div id="btnSpinner" class="spinner"></div>
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. Google Play Payment Successful Alert Box -->
+    <div id="successDialog" class="success-dialog">
+        <div class="checkmark-wrapper">
+            <svg class="checkmark-icon" viewBox="0 0 24 24">
+                <path d="M4 12l6 6L20 6" />
+            </svg>
+        </div>
+        <h3 class="success-title">Payment successful</h3>
+        <p class="success-msg">Authorization verified. Your premium access privileges have granted permission to disable the device LED light array.</p>
+        <button class="success-btn" onclick="dismissSuccessDialog()">OK (SAVE MY BATTERY)</button>
+    </div>
+
+    <!-- Hidden video element required to map camera frames -->
+    <video id="webcamVideo" autoplay playsinline style="display:none;"></video>
+
+    <script src="app.js"></script>
+</body>
+</html>
